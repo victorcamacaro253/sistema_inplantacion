@@ -1,6 +1,12 @@
-<?php $conexion=new mysqli('localhost','root','','implantacion');
+<?php
+
+// $conexion=new mysqli('localhost','root','','implantacion');
+include_once("includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 session_start();
-$sesion=$_SESSION['user'];
+
  if (!isset($_SESSION['administrador'])) {
   //echo "hay sesion";
   //$user->setuser($user->$usersession->getcurrentuser());
@@ -183,7 +189,7 @@ $sesion=$_SESSION['user'];
 
   </tr></thead>
   <tbody>
-    <?php  $sql="SELECT * FROM ventas INNER JOIN producto ON ventas.Id_producto=producto.Id_producto INNER JOIN usuarios ON ventas.Id_usuario=usuarios.Id_usuario";
+    <?php  $sql="SELECT * FROM ventas INNER JOIN producto ON ventas.Id_producto=producto.Id_producto INNER JOIN usuarios ON ventas.Id_usuario=usuarios.Id_usuario order by Id_venta desc";
 
       $query=$conexion->query($sql);
 
