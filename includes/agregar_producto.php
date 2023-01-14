@@ -1,6 +1,10 @@
 <?php 
 
-$conexion=new mysqli('localhost','root','','implantacion');
+//$conexion=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 
 
 $codigo=$_POST['barcode'];
