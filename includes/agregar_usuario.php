@@ -1,7 +1,11 @@
 <?php
 
 
-$conexion=new mysqli('localhost','root','','implantacion');
+//$conexion=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 
 $primer_nombre=$_POST['p_nombre'];
 $segundo_nombre=$_POST['s_nombre'];
