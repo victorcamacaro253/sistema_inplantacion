@@ -1,6 +1,10 @@
 <?php 
 session_start();
-$conexion=new mysqli('localhost','root','','implantacion');
+//$conexion=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 $sesion=$_SESSION['user'];
 
 ?>
@@ -209,7 +213,6 @@ if (!empty($_SESSION['cart'])) {
         <?php
 
 
-        
 
          $total+= ($value['precio'] * $value['item_quantity']);
               $total_dolares+= ($value['Precio_dolares'] * $value['item_quantity'] );
@@ -229,8 +232,9 @@ if (!empty($_SESSION['cart'])) {
               $total_completo=$total + $total_iva;
               $total_completo_dolares=$total_dolares + $total_iva_dolares;
 
-              mt_srand(10);
-              $codigo_factura=mt_rand();
+            srand(time());
+              //mt_srand(10);
+              $codigo_factura=rand(1,1000);
               $_SESSION['factura']=$codigo_factura;
 
               echo "<br>";
