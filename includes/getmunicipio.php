@@ -1,7 +1,12 @@
 <?php
 
 
-$mysqli=new mysqli('localhost','root','','implantacion');
+//$mysqli=new mysqli('localhost','root','','implantacion');
+
+include("../includes/db.php");
+
+$connect=new db();
+$mysqli=$connect->conexion();
 
 $id_estado=$_POST['id_estado'];
 
