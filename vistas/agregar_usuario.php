@@ -1,4 +1,10 @@
-<?php $mysqli=new mysqli('localhost','root','','implantacion'); 
+<?php 
+
+//$mysqli=new mysqli('localhost','root','','implantacion'); 
+include("../includes/db.php");
+
+$connect=new db();
+$mysqli=$connect->conexion();
 session_start();
 
  if (!isset($_SESSION['administrador'])) {
