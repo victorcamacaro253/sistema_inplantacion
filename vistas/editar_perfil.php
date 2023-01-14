@@ -1,6 +1,11 @@
-<?php $conexion=new mysqli('localhost','root','','implantacion');
+<?php 
+//$conexion=new mysqli('localhost','root','','implantacion');
  session_start();
  $id_usuario=$_SESSION['id'];
+ include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
  ?>
 
 
