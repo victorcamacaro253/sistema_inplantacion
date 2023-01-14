@@ -148,7 +148,7 @@ if (isset($_GET['action'])) {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- The user image in the navbar-->
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="">Administrador <b class="caret"></b> </span>
+                  <span class="">Usuario <b class="caret"></b> </span>
 
                 </a>
                 <ul class="dropdown-menu">
@@ -190,7 +190,7 @@ if (isset($_GET['action'])) {
           -->
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
-            <li class="header">ADMINISTRACION</li>
+            <li class="header">Usuario</li>
                                     <li><a href="../index.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
             <li><a href="./?view=sell"><i class="fa fa-usd"></i> <span>Vender</span></a></li>
             <li><a href="./?view=sells"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
