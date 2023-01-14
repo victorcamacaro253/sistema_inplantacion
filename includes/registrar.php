@@ -21,7 +21,12 @@ $email=$_POST['email'];
 $md5=md5($password);
 $fecha=date('d/m/Y h:i:s', time());
 
-$conexion=new mysqli("localhost","root","","implantacion");
+//$conexion=new mysqli("localhost","root","","implantacion");
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
+
 //$sql="SELECT * FROM usuarios where id_usuario='0'";
 //$sql="INSERT INTO 'usuarios'(PrimerNombre,SegundoNombre,PrimerApellido,SegundoApellido,usuario,password,Tipo_c,cedula,genero,email,telefono,Id_status_b,fecha) VALUES('$pnombre','$snombre','$papellido','$sapellido','$usuario','$md5','$tipo_c','$cedula','$genero','$telefono',1,'$fecha')";
 
