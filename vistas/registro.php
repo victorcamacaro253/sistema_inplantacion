@@ -1,5 +1,9 @@
 <?php 
- $mysqli=new mysqli('localhost','root','','implantacion');
+// $mysqli=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$mysqli=$connect->conexion();
  ?>
 
 
@@ -262,7 +266,7 @@ input[type=password]{
 
 					<tr>
 					
-					<td><div>Selecciona ciudad <select style="height: 50px;border-radius: 5px;font-size: 30px;" name="cbx_ciudad" id="cbx_ciudad" class="form-control"></select></div>
+					<td><div>Selecciona ciudad <select style="height: 50px;border-radius: 5px;" name="cbx_ciudad" id="cbx_ciudad" class="form-control"></select></div>
 					</td>
 					
 
@@ -394,13 +398,14 @@ input[type=password]{
                   	<td>
 
                   		<input type="submit" class="btn btn-success" value="Registrar" name="enviar">
-                  		<button class="btn btn-info" style="color: white;"><a href="index.php"></a>Volver</button>
+                  		
                   	</td>
                   	
                   </tr>
 				
               </table>
           </form>
+          <button class="btn btn-info" style="color: white;"><a href="../index.php">Volver</a></button>
       </div>
 
       </div>
