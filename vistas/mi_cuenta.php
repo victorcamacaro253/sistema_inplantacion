@@ -1,4 +1,11 @@
-<?php $conexion=new mysqli('localhost','root','','implantacion');
+<?php
+// $conexion=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
+
+
  session_start();
  $sesion=$_SESSION['user'];
  ?>
