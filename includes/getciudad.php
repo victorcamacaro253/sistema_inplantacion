@@ -2,7 +2,11 @@
 
 
 
-$mysqli=new mysqli('localhost','root','','implantacion');
+//$mysqli=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$mysqli=$connect->conexion();
 
 
 /*$id_municipio=$_POST['id_municipio'];
