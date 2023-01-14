@@ -1,4 +1,9 @@
-<?php $conexion=new mysqli('localhost','root','','implantacion');
+<?php
+// $conexion=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
  session_start();
  $id_usuario=$_GET['id'];
  if (!isset($_SESSION['administrador'])) {
