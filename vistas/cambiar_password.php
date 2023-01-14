@@ -9,7 +9,11 @@ if (!isset($_SESSION['user'])) {
 
 
 
-$conexion=new mysqli('localhost','root','','implantacion');
+
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 
 if(isset($_POST['changepwd'])){
 	
