@@ -36,6 +36,12 @@ class DB
     }
 
 
+    public function conexion(){
+      $conexion=new mysqli('localhost','root','','implantacion');
+      return $conexion;
+    }
+
+
 
 }
 
