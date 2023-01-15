@@ -1,7 +1,7 @@
 <?php
 
 // $conexion=new mysqli('localhost','root','','implantacion');
-include_once("includes/db.php");
+include_once("../includes/db.php");
 
 $connect=new db();
 $conexion=$connect->conexion();

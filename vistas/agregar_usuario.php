@@ -152,11 +152,11 @@ session_start();
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
-                                    <li><a href="./index.php?view=home"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+                                    <li><a href="../vistas/home_admin.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
             
-            <li><a href="./?view=sells"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
+            <li><a href="ver_ventas.php"><i class="fa fa-shopping-cart"></i> <span> Ventas</span></a></li>
             
-            <li><a href="./?view=products"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
+            <li><a href="ver_productos.php"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
 
             <li class="treeview">
               <a href="#"><i class="fa fa-database"></i> <span>Catalogos</span> </a>
@@ -175,17 +175,17 @@ session_start();
                 <li><a href="./?view=res">Abastecimientos</a></li>
               </ul>
             </li>
-                        <li class="treeview">
+                        <!--<li class="treeview">
               <a href="#"><i class="fa fa-file-text-o"></i> <span>Reportes</span></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=reports">Inventario</a></li>
                 <li><a href="./?view=sellreports">Ventas</a></li>
               </ul>
-            </li>
+            </li>-->
 
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-cog"></i> <span>Administracion</span></a>
+              <a href="../includes/cerrar_sesion.php"><i class="fa fa-cog"></i> <span> Cerrar sesion</span></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=users">Usuarios</a></li>
                 <li><a href="./?view=settings">Configuracion</a></li>

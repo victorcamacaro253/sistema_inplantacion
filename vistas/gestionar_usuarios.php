@@ -1,4 +1,9 @@
-<?php $conexion=new mysqli('localhost','root','','implantacion');
+<?php
+
+ include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 session_start();
 
  if (!isset($_SESSION['administrador'])) {
@@ -60,7 +65,7 @@ session_start();
                
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 
-                  <span class="">Administrador <b class="caret"></b> </span>
+                  <span class="">Administrador  </span>
 
                 </a>
                 <ul class="dropdown-menu">
@@ -100,16 +105,16 @@ session_start();
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu" style="width: 150px;">
             <li class="header">ADMINISTRACION</li>
-                                    <li><i class="fa fa-home"></i> <span>Inicio</span></li>
+                                    <li><i class="fa fa-home"></i> <span><a href="home_admin.php" style="text-decoration: none;"> Inicio</a></span></li>
                                     <br>
-           <li><i class="fa fa-shopping-cart"></i> <span>Ventas</span></li>
+           <li><i class="fa fa-shopping-cart"></i> <span><a href="ver_ventas.php" style="text-decoration: none;"> Ventas</a></span></li>
             
             <br>
             
-            <li><i class="fa fa-glass"></i> <span>Productos</span></li>
+            <li><i class="fa fa-glass"></i> <span><a href="ver_productos.php" style="text-decoration: none;"> Productos</a></span></li>
             <br>
             <li class="treeview">
-              <i class="fa fa-database"></i> <span>Usuarios</span> 
+              <i class="fa fa-database"></i> <span><a href="gestionar_usuarios.php" style="text-decoration: none;">Usuarios</a></span> 
              
             </li>
 
@@ -120,15 +125,13 @@ session_start();
               
             </li>
             <br>
-                        <li class="treeview">
-              <i class="fa fa-file-text-o"></i> <span>Reportes</span>
-              
-            </li>
-            <br>
+                       
+         
+          
 
 
             <li class="treeview">
-              <i class="fa fa-cog"></i> <span>Administracion</span></a>
+               <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php" style="text-decoration: none;"> Cerrar sesion</span></a>
               
             </li>
           
@@ -195,7 +198,7 @@ session_start();
 
 	</tr></thead>
   <tbody>
-    <?php $sql="SELECT * FROM usuarios INNER JOIN estados on usuarios.id_estado=estados.id_estado  INNER JOIN municipios ON usuarios.id_municipio=municipios.id_municipio INNER JOIN parroquias ON usuarios.id_parroquia=parroquias.id_parroquia INNER JOIN ciudades ON usuarios.id_ciudad=ciudades.id_ciudad INNER JOIN status_b ON usuarios.id_status_B=status_b.id_status_B INNER JOIN perfiles_usuario ON usuarios.Id_perfil=perfiles_usuario.Id_perfil";
+    <?php $sql="SELECT * FROM usuarios INNER JOIN estados on usuarios.id_estado=estados.id_estado  INNER JOIN municipios ON usuarios.id_municipio=municipios.id_municipio INNER JOIN parroquias ON usuarios.id_parroquia=parroquias.id_parroquia INNER JOIN ciudades ON usuarios.id_ciudad=ciudades.id_ciudad INNER JOIN status_b ON usuarios.id_status_B=status_b.id_status_B INNER JOIN perfiles_usuario ON usuarios.Id_perfil=perfiles_usuario.Id_perfil order by Id_usuario";
       $query=$conexion->query($sql);
 
       while ($row=$query->fetch_assoc()) {
