@@ -1,5 +1,9 @@
 <?php
-$conexion=new mysqli('localhost','root','','implantacion');
+//$conexion=new mysqli('localhost','root','','implantacion');
+include("../includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 session_start();
 if (!isset($_SESSION['administrador'])) {
   header('location:login_modo_privilegiado.php');
@@ -102,26 +106,20 @@ if (!isset($_SESSION['administrador'])) {
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
-                                    <li><i class="fa fa-home"></i> <span>Inicio</span></li>
+                                    <li><i class="fa fa-home"></i> <span><a href="home_admin.php" style="text-decoration: none;"> Inicio</a></span></li>
                                     <br>
-            <li><i class="fa fa-shopping-cart"></i> <span>Ventas</span></li>
+            <li><i class="fa fa-shopping-cart"></i> <span ><a href="ver_ventas.php" style="text-decoration: none;">Ventas</a></span></li>
             
             <br>
             
-            <li><i class="fa fa-glass"></i> <span>Productos</span></li>
+            <li><i class="fa fa-glass"></i> <span><a href="ver_productos.php" style="text-decoration: none;"> Productos</span></a></li>
             <br>
-            <li class="treeview">
-              <i class="fa fa-database"></i> <span>Catalogos</span> 
-             
-            </li>
+            
 
-            <br>
+            
 
-            <li >
-             <i class="fa fa-area-chart"></i> <span>Inventario</span>
-              
-            </li>
-            <br>
+          
+           
                         <li class="treeview">
               <i class="fa fa-file-text-o"></i> <span>Reportes</span>
               
@@ -130,7 +128,7 @@ if (!isset($_SESSION['administrador'])) {
 
 
             <li class="treeview">
-              <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php"> Administracion</span></a>
+              <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php" style="text-decoration: none;"> Cerrar sesion</span></a>
               
             </li>
           
@@ -144,7 +142,7 @@ if (!isset($_SESSION['administrador'])) {
       <div class="content">
         	<div class="row">
 	<div class="col-md-12">
-		<h1>Bienvenido a Sistema de Inventiario</h1>
+		<h1>Bienvenido a Sistema de Gestion </h1>
 </div>
 </div>
   <div class="row">
@@ -201,7 +199,7 @@ if (!isset($_SESSION['administrador'])) {
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="./?view=providers" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="ver_proveedores.php" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
