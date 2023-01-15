@@ -1,12 +1,17 @@
 <?php 
 session_start();
+if (!isset($_SESSION['user'])) {
+  //echo "hay sesion";
+  //$user->setuser($user->$usersession->getcurrentuser());
+  header("location:../index.php");
+}
 //$conexion=new mysqli('localhost','root','','implantacion');
 include("../includes/db.php");
 
 $connect=new db();
 $conexion=$connect->conexion();
 
-
+$sesion=$_SESSION['user'];
 
 
 
@@ -148,7 +153,17 @@ if (isset($_GET['action'])) {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- The user image in the navbar-->
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="">Usuario <b class="caret"></b> </span>
+                  <span class="" style="text-transform: uppercase;"><?php $sql="SELECT * FROM usuarios where Usuario='$sesion'";
+
+
+                  $query=$conexion->query($sql);
+
+                  while ($row=$query->fetch_assoc()) {
+                    echo $row['Primer_nombre'];
+                  }
+
+
+                   ?>    </span>
 
                 </a>
                 <ul class="dropdown-menu">
@@ -190,15 +205,28 @@ if (isset($_GET['action'])) {
           -->
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
-            <li class="header">Usuario</li>
+            <li class="header" style="text-transform: uppercase;"><?php $sql="SELECT * FROM usuarios where Usuario='$sesion'";
+
+
+                  $query=$conexion->query($sql);
+
+                  while ($row=$query->fetch_assoc()) {
+                    echo $row['Primer_nombre'];
+
+                   
+                  }
+
+
+                  
+                   ?></li>
                                     <li><a href="../index.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <li><a href="./?view=sell"><i class="fa fa-usd"></i> <span>Vender</span></a></li>
+           
             <li><a href="./?view=sells"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
             
             <li><a href="cart.php"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-database"></i> <span>Catalogos</span> </a>
+              <a href="../vistas/mi_cuenta.php"><i class="fa fa-database"></i> <span>Mi cuenta</span> </a>
               <ul class="treeview-menu">
                 <li><a href="./?view=categories">Categorias</a></li>
                 <li><a href="./?view=clients">Clientes</a></li>
@@ -215,7 +243,7 @@ if (isset($_GET['action'])) {
               </ul>
             </li>
                         <li class="treeview">
-              <a href="#"><i class="fa fa-file-text-o"></i> <span>Reportes</span></a>
+             
               <ul class="treeview-menu">
                 <li><a href="./?view=reports">Inventario</a></li>
                 <li><a href="./?view=sellreports">Ventas</a></li>
@@ -224,7 +252,7 @@ if (isset($_GET['action'])) {
 
 
             <li class="treeview">
-              <a href="../includes/logout1.php"><i class="fa fa-cog"></i> <span>Administracion</span></a>
+              <a href="../includes/logout1.php"><i class="fa fa-cog"></i> <span> Cerrar Sesion</span></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=users">Usuarios</a></li>
                 <li><a href="./?view=settings">Configuracion</a></li>
