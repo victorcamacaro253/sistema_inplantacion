@@ -9,7 +9,7 @@ $id_usuario=$_SESSION['id'];
 $factura=$_SESSION['factura'];
 
 
-$query_sentencia=$conexion->query("SELECT count(id_venta) + 1 as suma_venta  from ventas");
+/*$query_sentencia=$conexion->query("SELECT count(id_venta) + 1 as suma_venta  from ventas");
 $row=$query_sentencia->fetch_assoc();
 
 	
@@ -22,7 +22,7 @@ $constante=suma_venta;
 
 
 define('factura', $_SESSION['factura']);
-$factura=factura;
+$factura=factura;*/
 
 
 
@@ -41,7 +41,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 	if ($query){
 
 
-     $sql1="INSERT INTO ventas(Id_venta,Id_producto,Numero_factura,Nombre_producto,cantidad,Precio,Precio_dolares,Id_usuario) VALUES ($constante,'$id','$factura','$Nombre_producto','$cantidad','$precio','$Precio_dolares','$id_usuario')";
+     $sql1="INSERT INTO ventas(Id_producto,Numero_factura,Nombre_producto,cantidad,Precio,Precio_dolares,Id_usuario) VALUES ('$id','$factura','$Nombre_producto','$cantidad','$precio','$Precio_dolares','$id_usuario')";
 		$query1=$conexion->prepare($sql1);
 		$query1->execute();
 		
