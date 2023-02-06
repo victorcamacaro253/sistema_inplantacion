@@ -27,15 +27,19 @@ $sesion=$_SESSION['user'];
     <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
 	<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script type="text/javascript" src="../jspdf/jquery.min.js"></script>
+<script src="../jspdf/bootstrap.min.js"></script>
 
+  <script src="../jspdf/dist/jspdf.min.js"></script>
+  <script src="../jspdf/jspdf.plugin.autotable.min.js"></script>
 
           <script src="plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="plugins/morris/raphael-min.js"></script>
 <script src="plugins/morris/morris.js"></script>
   <link rel="stylesheet" href="plugins/morris/morris.css">
   <link rel="stylesheet" href="plugins/morris/example.css">
-          <script src="plugins/jspdf/jspdf.min.js"></script>
-          <script src="plugins/jspdf/jspdf.plugin.autotable.js"></script>
+          <script src="../plugins/jspdf/jspdf.min.js"></script>
+          <script src="../plugins/jspdf/jspdf.plugin.autotable.js"></script>
 	
 </head>
 
@@ -49,7 +53,7 @@ $sesion=$_SESSION['user'];
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>I</b>L</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Sistema de </b>inventario</span>
+          <span class="logo-lg"><b>Tienda </b>online</span>
         </a>
 
         <!-- Header Navbar -->
@@ -120,14 +124,12 @@ $sesion=$_SESSION['user'];
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
-                                    <li><a href="./index.php?view=home"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <li><a href="./?view=sell"><i class="fa fa-usd"></i> <span>Vender</span></a></li>
-            <li><a href="./?view=sells"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
+                                    <li><a href="../pagina-principal.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
             
-            <li><a href="./?view=products"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
+            <li><a href="cart.php"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-database"></i> <span>Catalogos</span> </a>
+              <a href="../vistas/mi_cuenta.php"><i class="fa fa-database"></i> <span>Mi cuenta</span> </a>
               <ul class="treeview-menu">
                 <li><a href="./?view=categories">Categorias</a></li>
                 <li><a href="./?view=clients">Clientes</a></li>
@@ -136,7 +138,7 @@ $sesion=$_SESSION['user'];
             </li>
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-area-chart"></i> <span>Inventario</span></a>
+              
               <ul class="treeview-menu">
                 <li><a href="./?view=inventary">Inventario</a></li>
                 <li><a href="./?view=re">Abastecer</a></li>
@@ -144,7 +146,7 @@ $sesion=$_SESSION['user'];
               </ul>
             </li>
                         <li class="treeview">
-              <a href="#"><i class="fa fa-file-text-o"></i> <span>Reportes</span></a>
+             
               <ul class="treeview-menu">
                 <li><a href="./?view=reports">Inventario</a></li>
                 <li><a href="./?view=sellreports">Ventas</a></li>
@@ -153,7 +155,7 @@ $sesion=$_SESSION['user'];
 
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-cog"></i> <span>Administracion</span></a>
+              <a href="../includes/logout1.php"><i class="fa fa-cog"></i> <span>Cerrar sesion</span></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=users">Usuarios</a></li>
                 <li><a href="./?view=settings">Configuracion</a></li>
@@ -201,7 +203,7 @@ if (!empty($_SESSION['cart'])) {
           <td><?php echo $value['Precio_dolares']; ?></td>
           <td><?php echo number_format($value["item_quantity"] * $value["precio"],2); ?></td>
           <td><?php echo number_format($value["item_quantity"] * $value["Precio_dolares"],2); ?></td>
-          <td><a class="btn btn-danger" href="cart.php?action=delete&id=<?php echo $value['id_producto']; ?>"><span class="text-danger">Remove item</span></a></td>
+          <td><a class="btn btn-danger" href="cart.php?action=delete&id=<?php echo $value['id_producto']; ?>"><span class="text-danger" style="color: #fff;">Remove item</span></a></td>
 
         </tr>
       </div>
@@ -237,19 +239,28 @@ if (!empty($_SESSION['cart'])) {
               $codigo_factura=rand(1,1000);
               $_SESSION['factura']=$codigo_factura;
 
+              $sql1="SELECT * FROM empresa";
+              $consulta=$conexion->query($sql1);
+              $row=$consulta->fetch_assoc();
+
               echo "<br>";
              
               echo "<br>";
 
               echo "<h1 style='text-align:center;'>SENIAT</h1>";
-              echo "<p style='text-align:center'>Empresa XXXXXXX C.A.</p>";
-              echo "<p style='text-align:center'>AV ENTRE CALLES 27 Y 28 LOCAL NRO 27-101 SECTOR CENTRO BARQUISIMETO LARA POSTAL 3001  </p>";
+              echo "<p style='text-align:center'>Empresa ". $row['Nombre_empresa']   ." C.A.</p>";
+              echo "<p style='text-align:center'>".$row['Direccion']." </p>";
                echo "<h1 style='text-align:center;'>FACTURA</h1>";
                echo "<p>FACTURA:                         ".$codigo_factura." </p>";
                echo "FECHA:    ".date('m/y/d')."" ;
                echo "<br>";
                echo "HORA:".date('h:i:s');
                echo "<br>";
+               echo "<select id='' class='' name='metodo' style='height:30px;border-radius:5px;'>
+                <option>Seleccione metodo de pago</option>
+                <option>Transerencia</option>
+                <option>Pago movil</option>
+               </select>";
                echo "<hr>";
               
              echo "El total del precio de los productos es ".$total." Bs<br> y en dolares es ".$total_dolares."$";
@@ -274,6 +285,10 @@ if (!empty($_SESSION['cart'])) {
              echo "<br>";
              echo "<button type='submit' class='btn btn-primary'><a href='restar_stock.php' style='color:white;margin-bottom'> Terminar compra</a></button>";
 
+             echo "</div>";
+
+             echo "<div style=margin-bottom:10px;>";
+             echo "<button id='generarpdf' class='btn btn-default'>Generar PDF</button>";
              echo "</div>";
 
     }
@@ -356,7 +371,31 @@ if (!empty($_SESSION['cart'])) {
 
 
 
+<script>
+  
+$("#generarpdf").click(function(){
+  var pdf = new jsPDF();
+  pdf.text(20,20,"Mostrando Los datos de la compra");
 
+  var columns = ["Id","nombre producto", "Precio", "Cantidad"];
+  var data = [
+  <?php $n=0 ;?>
+<?php foreach($_SESSION['cart'] as $c):?>
+  <?php $n++; ?>
+ [<?php echo $n; ?>, "<?php echo $c['nombre_producto']; ?>", "<?php echo $c['precio']; ?>", "<?php echo $c['item_quantity']?>"],
+<?php endforeach; ?>  
+  ];
+
+  pdf.autoTable(columns,data,
+    { margin:{ top: 25  }}
+  );
+
+  pdf.save('compra.pdf');
+
+});
+
+
+</script>
 
 <script type="text/javascript" src="..\plugins\bootstrap\js\bootstrap.min.js"></script>
 </body>

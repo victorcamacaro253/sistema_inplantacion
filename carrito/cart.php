@@ -134,7 +134,7 @@ if (isset($_GET['action'])) {
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>I</b>L</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Tienda </b>online</span>
+          <span class="logo-lg"><b>Tina </b>online</span>
         </a>
 
         <!-- Header Navbar -->
@@ -204,7 +204,7 @@ if (isset($_GET['action'])) {
           </div>
           -->
           <!-- Sidebar Menu -->
-          <ul class="sidebar-menu">
+          <ul class="sidebar-menu" >
             <li class="header" style="text-transform: uppercase;"><?php $sql="SELECT * FROM usuarios where Usuario='$sesion'";
 
 
@@ -219,9 +219,9 @@ if (isset($_GET['action'])) {
 
                   
                    ?></li>
-                                    <li><a href="../index.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+                                    <li><a href="../pagina-principal.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
            
-            <li><a href="./?view=sells"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
+           
             
             <li><a href="cart.php"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
 
@@ -234,14 +234,7 @@ if (isset($_GET['action'])) {
               </ul>
             </li>
 
-            <li class="treeview">
-              <a href="#"><i class="fa fa-area-chart"></i> <span>Inventario</span></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=inventary">Inventario</a></li>
-                <li><a href="./?view=re">Abastecer</a></li>
-                <li><a href="./?view=res">Abastecimientos</a></li>
-              </ul>
-            </li>
+           
                         <li class="treeview">
              
               <ul class="treeview-menu">
@@ -267,7 +260,7 @@ if (isset($_GET['action'])) {
 
 
 
-<div class="container" style="width: 650px;padding: 0px 100px 20px 0px;">
+<div class="container" style="width: 650px;padding: 0px 100px 20px 0px;margin-right:20px">
 	<h2>Nuestros Productos</h2>
 <?php
 $idSesion = session_id();
@@ -278,9 +271,9 @@ $result = mysqli_query($conexion,$sql);
                 while ($row = mysqli_fetch_array($result)) {
 
                     ?>
- 	<div class="col-md-3" >
+ 	<div class="col-md-3" style="margin-bottom: 20px;" >
 	<form method="POST" action="cart.php?action=add&id=<?php echo $row['Id_producto'] ?>">
-		<div class="product">
+		<div class="product" >
 			<img style="height: 200px;" src="..\vistas\images\<?php echo $row['imagen_producto'] ?>" class="img-responsive">
 			<h5 class="text-info"><?php echo $row['Nombre_producto']; ?></h5>
 			<h5 class="text-danger">Bs <?php echo $row['Precio'];echo "/  $".$row['Precio_dolares'] ?></h5>
@@ -337,7 +330,7 @@ $result = mysqli_query($conexion,$sql);
      			<td><?php echo $value['Precio_dolares']; ?></td>
      			<td><?php echo number_format($value["item_quantity"] * $value["precio"],2); ?></td>
      			<td><?php echo number_format($value["item_quantity"] * $value["Precio_dolares"],2); ?></td>
-     			<td><a class="btn btn-danger" href="cart.php?action=delete&id=<?php echo $value['id_producto']; ?>"><span class="text-danger">Remove item</span></a></td>
+     			<td><a class="btn btn-danger" href="cart.php?action=delete&id=<?php echo $value['id_producto']; ?>"><span class="text-danger" style="color: #fff;">Remove item</span></a></td>
      		</tr>
      		<?php
      		$total=$total + ($value['item_quantity'] * $value['precio']);
@@ -363,7 +356,7 @@ $result = mysqli_query($conexion,$sql);
 	?>
 </table>
 
-<button class="btn btn-warning" ><i class="fa fa-shopping-cart"></i><a href="factura.php">Ver carrito</a></button>
+<button class="btn btn-warning" ><i class="fa fa-shopping-cart"></i> <a href="factura.php" style="color: #fff;">Ver carrito</a></button>
 	
 </div>
 
