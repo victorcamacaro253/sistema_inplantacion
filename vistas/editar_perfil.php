@@ -85,7 +85,7 @@ $conexion=$connect->conexion();
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>I</b>L</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Tienda </b>online</span>
+          <span class="logo-lg"><b>Tina </b>online</span>
         </a>
 
         <!-- Header Navbar -->
@@ -157,43 +157,21 @@ $conexion=$connect->conexion();
           <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
                                     <li><a href="../index.php"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <li><a href="./?view=sell"><i class="fa fa-usd"></i> <span>Vender</span></a></li>
-            <li><a href="./?view=sells"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
             
-            <li><a href="./?view=products"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
+            
+            <li><a href="../carrito/cart.php"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-database"></i> <span>Catalogos</span> </a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=categories">Categorias</a></li>
-                <li><a href="./?view=clients">Clientes</a></li>
-                <li><a href="./?view=providers">Proveedores</a></li>
-              </ul>
+              <a href="mi_cuenta.php"><i class="fa fa-database"></i> <span>Mi cuenta</span> </a>
+              
             </li>
 
-            <li class="treeview">
-              <a href="#"><i class="fa fa-area-chart"></i> <span>Inventario</span></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=inventary">Inventario</a></li>
-                <li><a href="./?view=re">Abastecer</a></li>
-                <li><a href="./?view=res">Abastecimientos</a></li>
-              </ul>
-            </li>
-                        <li class="treeview">
-              <a href="#"><i class="fa fa-file-text-o"></i> <span>Reportes</span></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=reports">Inventario</a></li>
-                <li><a href="./?view=sellreports">Ventas</a></li>
-              </ul>
-            </li>
+            
 
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-cog"></i> <span>Administracion</span></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=users">Usuarios</a></li>
-                <li><a href="./?view=settings">Configuracion</a></li>
-              </ul>
+              <a href="../includes/logout1.php"><i class="fa fa-cog"></i> <span>Cerrar sesion</span></a>
+              
             </li>
           
           </ul><!-- /.sidebar-menu -->

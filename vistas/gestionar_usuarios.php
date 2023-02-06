@@ -47,7 +47,7 @@ session_start();
           
           <span class="logo-mini"><b>I</b>L</span>
           
-          <span class="logo-lg"><b>Sistema de </b>Inventario</span>
+          <span class="logo-lg"><b>Sistema de </b>gestion</span>
         </div>
 
         
@@ -103,35 +103,29 @@ session_start();
           </div>
           -->
           <!-- Sidebar Menu -->
-          <ul class="sidebar-menu" style="width: 150px;">
+         <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
-                                    <li><i class="fa fa-home"></i> <span><a href="home_admin.php" style="text-decoration: none;"> Inicio</a></span></li>
+                                    <li><i class="fa fa-home"></i> <span><a href="home_admin.php" style="text-decoration: none;">Inicio</a></span></li>
                                     <br>
-           <li><i class="fa fa-shopping-cart"></i> <span><a href="ver_ventas.php" style="text-decoration: none;"> Ventas</a></span></li>
-            
+            <li><i class="fa fa-shopping-cart"></i> <span ><a href="ver_ventas.php" style="text-decoration: none;">Ventas</a></span></li>
             <br>
             
-            <li><i class="fa fa-glass"></i> <span><a href="ver_productos.php" style="text-decoration: none;"> Productos</a></span></li>
+            <li><i class="fa fa-glass"></i> <span><a href="" style="text-decoration: none;">Productos</a></span></li>
             <br>
             <li class="treeview">
-              <i class="fa fa-database"></i> <span><a href="gestionar_usuarios.php" style="text-decoration: none;">Usuarios</a></span> 
+              <i class="fa fa-database"></i> <span><a href="mi_cuenta_admin.php" style="text-decoration: none;">Mi cuenta</a></span> 
              
             </li>
 
             <br>
 
-            <li >
-             <i class="fa fa-area-chart"></i> <span>Inventario</span>
-              
-            </li>
-            <br>
-                       
-         
-          
+            
+            
+            
 
 
             <li class="treeview">
-               <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php" style="text-decoration: none;"> Cerrar sesion</span></a>
+              <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php" style="text-decoration: none;"> Cerrar sesion </a></span>
               
             </li>
           

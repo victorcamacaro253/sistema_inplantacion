@@ -9,9 +9,18 @@ if (!isset($_SESSION['administrador'])) {
   header('location:login_modo_privilegiado.php');
 }
 
+$query=$conexion->query("SELECT * FROM producto");
 
+
+$productos = array();
+$n=0;
+while($r=$query->fetch_object()){ $productos[]=$r; $n++;}
 
 ?>
+
+
+
+
 
 
 
@@ -28,6 +37,11 @@ if (!isset($_SESSION['administrador'])) {
     <link href="../plugins/dist/css/skins/skin-blue-light.min.css" rel="stylesheet" type="text/css">
    
      <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css">
+      <script type="text/javascript" src="../jspdf/jquery.min.js"></script>
+<script src="../jspdf/bootstrap.min.js"></script>
+
+  <script src="../jspdf/dist/jspdf.min.js"></script>
+  <script src="../jspdf/jspdf.plugin.autotable.min.js"></script>
    
       
 
@@ -51,7 +65,7 @@ if (!isset($_SESSION['administrador'])) {
           
           <span class="logo-mini"><b>I</b>L</span>
           
-          <span class="logo-lg"><b>Sistema de </b>Inventario</span>
+          <span class="logo-lg"><b>Sistema de </b>gestion</span>
         </div>
 
         
@@ -111,32 +125,25 @@ if (!isset($_SESSION['administrador'])) {
             <li class="header">ADMINISTRACION</li>
                                     <li><i class="fa fa-home"></i> <span><a href="home_admin.php" style="text-decoration: none;">Inicio</a></span></li>
                                     <br>
-            <li><i class="fa fa-shopping-cart"></i>  <span>Ventas</span></li>
+            <li><i class="fa fa-shopping-cart"></i> <span ><a href="ver_ventas.php" style="text-decoration: none;">Ventas</a></span></li>
             <br>
             
-            <li><i class="fa fa-glass"></i> <span>Productos</span></li>
+            <li><i class="fa fa-glass"></i> <span><a href="" style="text-decoration: none;">Productos</a></span></li>
             <br>
             <li class="treeview">
-              <i class="fa fa-database"></i> <span>Catalogos</span> 
+              <i class="fa fa-database"></i> <span><a href="mi_cuenta_admin.php" style="text-decoration: none;">Mi cuenta</a></span> 
              
             </li>
 
             <br>
 
-            <li >
-             <i class="fa fa-area-chart"></i> <span>Inventario</span>
-              
-            </li>
-            <br>
-                        <li class="treeview">
-              <i class="fa fa-file-text-o"></i> <span>Reportes</span>
-              
-            </li>
-            <br>
+            
+            
+            
 
 
             <li class="treeview">
-              <i class="fa fa-cog"></i> <span>Administracion</span></a>
+              <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php" style="text-decoration: none;"> Cerrar sesion </a></span>
               
             </li>
           
@@ -237,6 +244,8 @@ if (!isset($_SESSION['administrador'])) {
 
 <div class="clearfix"></div>
 
+<button id="generarpdf" class="btn btn-default">Descargar Lista productos</button>
+
   
   
   
@@ -246,5 +255,29 @@ if (!isset($_SESSION['administrador'])) {
 </div>
 </div>
 </div>
+
+
+<script>
+$("#generarpdf").click(function(){
+  var pdf = new jsPDF();
+  pdf.text(20,20,"Mostrando los productos en el stock");
+
+  var columns = ["Id", "codigo","Nombre", "Descripcion", "Precio"];
+  var data = [
+<?php foreach($productos as $c):?>
+  <?php $n++?>
+ [<?php echo $n; ?>, "<?php echo $c->codigo_producto; ?>", "<?php echo $c->Nombre_producto; ?>", "<?php echo $c->Descripcion_producto; ?>", "<?php echo $c->Precio; ?>"],
+<?php endforeach; ?>  
+  ];
+
+  pdf.autoTable(columns,data,
+    { margin:{ top: 25  }}
+  );
+
+  pdf.save('Productos.pdf');
+
+});
+</script>
+
 </body>
 </html>

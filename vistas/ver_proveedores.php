@@ -121,8 +121,8 @@ if (!isset($_SESSION['administrador'])) {
           
            
                         <li class="treeview">
-              <i class="fa fa-file-text-o"></i> <span>Reportes</span>
-              
+              <i class="fa fa-database"></i> <span><a href="mi_cuenta_admin.php" style="text-decoration: none;">Mi cuenta</a></span> 
+             
             </li>
             <br>
 

@@ -90,7 +90,7 @@ session_start();
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>I</b>L</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Sistema de </b>inventario</span>
+          <span class="logo-lg"><b>Sistema de </b>gestion</span>
         </a>
 
         <!-- Header Navbar -->
@@ -159,7 +159,7 @@ session_start();
             <li><a href="ver_productos.php"><i class="fa fa-glass"></i> <span>Productos</span></a></li>
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-database"></i> <span>Catalogos</span> </a>
+              <a href="mi_cuenta_admin.php"><i class="fa fa-database"></i> <span>Mi cuenta</span> </a>
               <ul class="treeview-menu">
                 <li><a href="./?view=categories">Categorias</a></li>
                 <li><a href="./?view=clients">Clientes</a></li>
@@ -167,14 +167,7 @@ session_start();
               </ul>
             </li>
 
-            <li class="treeview">
-              <a href="#"><i class="fa fa-area-chart"></i> <span>Inventario</span></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=inventary">Inventario</a></li>
-                <li><a href="./?view=re">Abastecer</a></li>
-                <li><a href="./?view=res">Abastecimientos</a></li>
-              </ul>
-            </li>
+            
                         <!--<li class="treeview">
               <a href="#"><i class="fa fa-file-text-o"></i> <span>Reportes</span></a>
               <ul class="treeview-menu">

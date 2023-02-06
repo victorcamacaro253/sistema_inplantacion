@@ -16,7 +16,7 @@ session_start();
 
 <html><head>
     <meta charset="UTF-8">
-    <title>Gestion de usuario</title>
+    <title>Gestion de ventas</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     
     <link href="../bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -47,7 +47,7 @@ session_start();
           
           <span class="logo-mini"><b>I</b>L</span>
           
-          <span class="logo-lg"><b>Sistema de </b>Inventario</span>
+          <span class="logo-lg"><b>Sistema de </b>gestion</span>
         </div>
 
         
@@ -103,37 +103,29 @@ session_start();
           </div>
           -->
           <!-- Sidebar Menu -->
-          <ul class="sidebar-menu" style="width: 150px;">
+          <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
-                                    <li><i class="fa fa-home"></i> <span>Inicio</span></li>
+                                    <li><i class="fa fa-home"></i> <span><a href="home_admin.php" style="text-decoration: none;">Inicio</a></span></li>
                                     <br>
-           <li><i class="fa fa-shopping-cart"></i> <span>Ventas</span></li>
-            
+            <li><i class="fa fa-shopping-cart"></i> <span ><a href="ver_ventas.php" style="text-decoration: none;">Ventas</a></span></li>
             <br>
             
-            <li><i class="fa fa-glass"></i> <span>Productos</span></li>
+            <li><i class="fa fa-glass"></i> <span><a href="ver_productos.php" style="text-decoration: none;">Productos</a></span></li>
             <br>
             <li class="treeview">
-              <i class="fa fa-database"></i> <span>Usuarios</span> 
+              <i class="fa fa-database"></i> <span><a href="mi_cuenta_admin.php" style="text-decoration: none;">Mi cuenta</a></span> 
              
             </li>
 
             <br>
 
-            <li >
-             <i class="fa fa-area-chart"></i> <span>Inventario</span>
-              
-            </li>
-            <br>
-                        <li class="treeview">
-              <i class="fa fa-file-text-o"></i> <span>Reportes</span>
-              
-            </li>
-            <br>
+            
+            
+            
 
 
             <li class="treeview">
-              <i class="fa fa-cog"></i> <span>Administracion</span></a>
+              <i class="fa fa-cog"></i> <span><a href="../includes/cerrar_sesion.php" style="text-decoration: none;"> Cerrar sesion </a></span>
               
             </li>
           

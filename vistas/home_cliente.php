@@ -4,7 +4,11 @@
   header("location:../index.php");
 }
 
-$conexion=new mysqli('localhost','root','','implantacion');
+//$conexion=new mysqli('localhost','root','','implantacion');
+include_once("includes/db.php");
+
+$connect=new db();
+$conexion=$connect->conexion();
 
 $sesion=$_SESSION['user'];
 $id=$_SESSION['id'];
@@ -45,7 +49,7 @@ $id=$_SESSION['id'];
           
           <span class="logo-mini"><b>I</b>L</span>
           
-          <span class="logo-lg"><b>Tienda </b>online</span>
+          <span class="logo-lg"><b>Tina </b>online</span>
         </div>
 
         
@@ -126,9 +130,9 @@ $id=$_SESSION['id'];
 
                   
                    ?></li>
-                                    <li><i class="fa fa-home"></i> <span><a href="index.php" style="text-decoration: none;"> Inicio</a></span></li>
-                                    <br>
-            <li><i class="fa fa-shopping-cart"></i> <span>Ventas</span></li>
+                                    <li><i class="fa fa-home"></i> <span><a href="#" style="text-decoration: none;"> Inicio</a></span></li>
+                                    
+            
             
             <br>
             
@@ -138,12 +142,6 @@ $id=$_SESSION['id'];
               <i class="fa fa-database"></i><span ><a href="vistas/mi_cuenta.php" style="text-decoration: none;">Mi cuenta</a> </span>
             </li>
 
-            <br>
-
-            <li >
-             <i class="fa fa-area-chart" ></i> <span >Inventario</span>
-              
-            </li>
             <br>
                       
             
@@ -228,8 +226,8 @@ $id=$_SESSION['id'];
       <img src="vistas\images\WhatsApp Image 2022-12-08 at 11.06.53 AM.jpeg" style="width: 50%; height: 10em;">
       
       </tr>
-       </table>
-       <div id="product-tabs-slider" class="scroll-tabs inner-bottom-vs  wow fadeInUp">
+      </table>
+       <!--<div id="product-tabs-slider" class="scroll-tabs inner-bottom-vs  wow fadeInUp">
       <div class="more-info-tab clearfix">
          <h3 class="new-product-title pull-left">Productos Destacados</h3>
         
@@ -285,8 +283,8 @@ $id=$_SESSION['id'];
     <div class="product-image">
       <div class="image">
         <a href=""><img style="border-radius: 5px;border:2px solid black;"  src="vistas/images/WhatsApp Image 2022-12-08 at 10.44.20 AM.jpeg" data-echo=""  width="180" height="300"></a>
-      </div><!-- /.image -->                                     
-    </div><!-- /.product-image -->
+      </div>                                     
+    </div>
       
     
     <div class="product-info text-left">
@@ -309,9 +307,7 @@ $id=$_SESSION['id'];
 </div>
 
 
-
-      <!-- /.product -->
-      
+   
     
   
         
@@ -324,8 +320,8 @@ $id=$_SESSION['id'];
     <div class="product-image">
       <div class="image">
         <a href=""><img  style="border-radius: 5px;border:2px solid black;"  src="vistas/images/WhatsApp Image 2022-12-08 at 10.43.58 AM.jpeg" data-echo=""  width="200" height="300"></a>
-      </div><!-- /.image -->                                     
-    </div><!-- /.product-image -->
+      </div>                                     
+    </div>
       
     
     <div class="product-info text-left">
@@ -354,16 +350,51 @@ $id=$_SESSION['id'];
 
 
    
-      </div><!-- /.product -->
+      </div>
       
-      </div><!-- /.products -->
-    </div><!-- /.item -->
+      </div>
+    </div>
     </div>
   </div>
+</div>-->
+<section>
+  
+  <h2 class="text-center font-oswald">NUESTROS PRODUCTOS</h2><br>
+
+    <div class="container">
+      <div class="row">
+    <?php
+    
+     $sql="SELECT Id_producto,imagen_producto,Nombre_producto,Descripcion_producto,Precio,Precio_dolares FROM producto limit 0,4 ";
+     $query=$conexion->query($sql);
+
+     while ($row=$query->fetch_assoc()) {
+     
+     
+    ?>
+    
+    <div class="col-md-3" style="height: 200px; text-align: center;align-items: center; margin-bottom: 150px;">
+      <h1><?php echo $row['Nombre_producto']; ?></h1>
+          <img style="height: 200px;width: 200px; margin-bottom: 10px;"  src="vistas/images/<?php echo $row['imagen_producto'] ?>">
+          <a  style="padding-top: 5px;margin-top: 5px;" href="vistas/detalle_producto.php?id=<?php echo $row['Id_producto'] ?>"><span class="btn btn-primary"> Ver detalles</span></a>
+
+
+        </div>
+        
+        <?php
+      }
+      ?>
+    </div>
+    </div>
+
+    
+  </section>
+
+
+
 </div>
-</div>
-      </div><!-- /.home-owl-carousel -->
-          </div><!-- /.product-slider -->
+      </div>
+          </div>
         </div>
   </div>
 </div>
